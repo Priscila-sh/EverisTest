@@ -6,15 +6,14 @@ on:
 jobs:
   postman-application:
     runs-on: ubuntu-latest
-            steps:
-                - name: Set up JDK 1.8
-                - uses: actions/checkout@v2
-                - name:  Install Google Chrome # Using shell script to install Google Chrome
-                - uses: actions/setup-java@v1
-                  with:
-                    java-version: 1.8
-                  run:   |
-                          chmod +x ./scripts/InstallChrome.sh
-                                      ./scripts/InstallChrome.sh 
-                - name: Build with Maven
-                  run: mvn test --file pom.xml
+    steps:
+      - name: Set up JDK 1.8
+      - uses: actions/checkout@v2
+      - name: Install Google Chrome # Using shell script to install Google Chrome
+      - uses: actions/setup-java@v1
+        with: java-version: 1.8
+        run: |
+                chmod +x ./scripts/InstallChrome.sh
+                            ./scripts/InstallChrome.sh 
+      - name: Build with Maven
+        run: mvn test --file pom.xml
