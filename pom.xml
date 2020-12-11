@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>app.everis</groupId>
+	<artifactId>automatizacao</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<junit.version>4.12</junit.version>
+		<junit.params.version>1.1.1</junit.params.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Dependencia para usar arquivos CSV como massa de dados -->
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<version>${junit.params.version}</version>
+		</dependency>
+
+		<!-- Dependencia para usar Selenium -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Para execucao dos testes via POM ou linha de comando pelo Manven -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M3</version>
+				</plugin>
+			    <plugin>    
+			        <artifactId>maven-compiler-plugin</artifactId>
+			        <configuration>
+			            <source>1.8</source>
+			            <target>1.8</target>
+			        </configuration>
+			    </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
