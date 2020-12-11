@@ -7,11 +7,39 @@
 	"item": [
 		{
 			"name": "HttpBin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "050987f7-9e1b-4b62-89e5-6f78870ea944",
+						"exec": [
+							"\r",
+							"pm.test(\"O status code é 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validar se o retorno da URL é https://httpbin.org/get\", function () {\r",
+							"  var jsonData = pm.response.json();\r",
+							"  pm.expect(jsonData.url).to.eql(\"https://httpbin.org/get\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://httpbin.org/get",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					]
 				}
 			},
 			"response": []
