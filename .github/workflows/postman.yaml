@@ -2,7 +2,7 @@ name: postman-workflow
 on: 
   push:
     branches:
-      - develop
+      - main
 jobs:
   postman-application:
     runs-on: ubuntu-latest
