@@ -28,6 +28,13 @@
 			<version>${junit.params.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
+
 		<!-- Dependencia para usar Selenium -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -46,13 +53,13 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>3.0.0-M3</version>
 				</plugin>
-			    <plugin>    
-			        <artifactId>maven-compiler-plugin</artifactId>
-			        <configuration>
-			            <source>1.8</source>
-			            <target>1.8</target>
-			        </configuration>
-			    </plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

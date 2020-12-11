@@ -6,26 +6,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseSelenium {
 
 	private static WebDriver driver = null;
-	public static final String CHROME_DRIVER = "src/test/resources/chromedriver.exe";
+	// public static final String CHROME_DRIVER = "src/test/resources/chromedriver.exe";
 	public static final boolean HEADLESS = false;
 	public static final String LOJA = "http://automationpractice.com/index.php";
 
 	@BeforeClass
 	public static void inicializarSistema() {
-		System.setProperty("webdriver.chrome.driver", CHROME_DRIVER);
+		WebDriverManager.chromedriver().setup();
 
-		if (HEADLESS) {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--headless");
 
-			driver = iniciarWebDriverEmModoHeadless();
-		} else {
+		driver = new ChromeDriver(options);
 
-			driver = iniciarWebDriverEmModoDefault();
-		}
+		// if (HEADLESS) {
+		//
+		// driver = iniciarWebDriverEmModoHeadless();
+		// } else {
+		//
+		// driver = iniciarWebDriverEmModoDefault();
+		// }
 
-		driver.manage().window().maximize();
+		// driver.manage().window().maximize();
 		driver.get(LOJA);
 
 	}
@@ -35,15 +44,15 @@ public class BaseSelenium {
 		driver.quit();
 	}
 
-	private static ChromeDriver iniciarWebDriverEmModoDefault() {
-		return new ChromeDriver();
-	}
-
-	private static ChromeDriver iniciarWebDriverEmModoHeadless() {
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		return new ChromeDriver(options);
-	}
+	// private static ChromeDriver iniciarWebDriverEmModoDefault() {
+	// return new ChromeDriver();
+	// }
+	//
+	// private static ChromeDriver iniciarWebDriverEmModoHeadless() {
+	// ChromeOptions options = new ChromeOptions();
+	// options.addArguments("--headless");
+	// return new ChromeDriver(options);
+	// }
 
 	public static WebDriver getDriver() {
 		return driver;
